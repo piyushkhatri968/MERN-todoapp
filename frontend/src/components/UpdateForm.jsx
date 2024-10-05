@@ -13,7 +13,7 @@ const UpdateForm = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/todo/${id}`)
+      .get(`https://mern-todoapp-backend-pi.vercel.app/todo/${id}`)
       .then((response) => {
         setTask(response.data.task);
         setDescription(response.data.description);
@@ -34,7 +34,7 @@ const UpdateForm = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/todo/${id}`,
+        `https://mern-todoapp-backend-pi.vercel.app/todo/${id}`,
         data
       );
       console.log(response);

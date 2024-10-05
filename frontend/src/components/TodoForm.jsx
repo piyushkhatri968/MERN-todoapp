@@ -21,7 +21,10 @@ const TodoForm = () => {
     const data = { task, description };
 
     try {
-      const response = await axios.post("http://localhost:8080/todo", data);
+      const response = await axios.post(
+        "https://mern-todoapp-backend-pi.vercel.app/todo",
+        data
+      );
       console.log(response);
       enqueueSnackbar("Task Added successfully", {
         variant: "success",

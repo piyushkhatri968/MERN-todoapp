@@ -12,7 +12,9 @@ const DeleteForm = () => {
   const { id } = useParams();
   const handleDelete = async () => {
     try {
-      const deleteTask = await axios.delete(`http://localhost:8080/todo/${id}`);
+      const deleteTask = await axios.delete(
+        `https://mern-todoapp-backend-pi.vercel.app/todo/${id}`
+      );
       enqueueSnackbar("Task Deleted Successfully", { variant: "success" });
       Navigate("/");
     } catch (error) {
