@@ -15,7 +15,7 @@ const TodoForm = () => {
     e.preventDefault();
 
     if (!task || !description) {
-      alert("fill both fields");
+      enqueueSnackbar("Please fill both fields", { variant: "warning" });
       return;
     }
     const data = { task, description };

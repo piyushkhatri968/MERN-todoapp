@@ -73,7 +73,7 @@ router.put("/:id", async (req, res) => {
     });
 
     if (!updateTask) {
-      return res.status(404), express.json({ message: "Task not found" });
+      return res.status(404).json({ message: "Task not found" });
     }
     return res.status(200).json(updateTask);
   } catch (error) {
