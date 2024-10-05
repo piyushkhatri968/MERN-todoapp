@@ -7,7 +7,7 @@ const todoRoute = require("./routes/todoRoute");
 app.use(express.json());
 app.use(cors());
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 const mongoURL = process.env.MONGO_ATLAS_URL;
 
 mongoose
