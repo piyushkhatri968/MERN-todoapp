@@ -13,7 +13,7 @@ const TodoList = () => {
   useEffect(() => {
     setloading(true);
     axios
-      .get("http://localhost:8080/todo")
+      .get("https://mern-todoapp-backend-pi.vercel.app/todo")
       .then((response) => {
         setTasks(response.data.data);
         console.log(response.data.data);
