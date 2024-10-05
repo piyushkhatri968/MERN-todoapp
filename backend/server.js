@@ -22,4 +22,8 @@ mongoose
     console.log(error.message);
   });
 
+app.get("/", (req, res) => {
+  res.send("App is Running");
+});
+
 app.use("/todo", todoRoute);
