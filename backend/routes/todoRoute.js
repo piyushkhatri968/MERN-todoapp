@@ -5,7 +5,7 @@ const Todo = require("../models/todoList");
 // Route for Get All Books from database
 router.get("/", async (req, res) => {
   try {
-    const tasks = await Todo.find();
+    const tasks = await Todo.find().sort({ updatedAt: -1 });
     return res.status(201).send({ count: tasks.length, data: tasks });
   } catch (error) {
     console.log(error.message);
