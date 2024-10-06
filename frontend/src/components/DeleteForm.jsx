@@ -1,9 +1,10 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
 const DeleteForm = () => {
+  const [loading, Setloading] = useState(false);
   const Navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const handleCancel = () => {
@@ -12,6 +13,7 @@ const DeleteForm = () => {
   const { id } = useParams();
   const handleDelete = async () => {
     try {
+      Setloading(true);
       const deleteTask = await axios.delete(
         `https://mern-todoapp-backend-pi.vercel.app/todo/${id}`
       );
@@ -42,7 +44,7 @@ const DeleteForm = () => {
             className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors"
             onClick={handleDelete}
           >
-            Yes, Delete it
+            {loading ? "Deleting ..." : "Yes, Delete it"}
           </button>
         </div>
       </div>

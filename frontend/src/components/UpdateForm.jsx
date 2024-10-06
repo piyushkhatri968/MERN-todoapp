@@ -13,6 +13,7 @@ const UpdateForm = () => {
   const Navigate = useNavigate();
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
+  const [updateloading, SetUpdateloading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -36,6 +37,7 @@ const UpdateForm = () => {
       enqueueSnackbar("Please fill both fields", { variant: "warning" });
       return;
     }
+    SetUpdateloading(true);
     const data = { task, description };
 
     try {
@@ -88,7 +90,7 @@ const UpdateForm = () => {
                 />
               </div>
               <button className="update-button" type="submit">
-                Update
+                {updateloading ? "Updating ..." : "Update Task"}
               </button>
             </form>
           </div>

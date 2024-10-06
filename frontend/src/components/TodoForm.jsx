@@ -8,17 +8,18 @@ import "../Styles/TodoForm.css";
 const TodoForm = () => {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
   const Navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!task || !description) {
       enqueueSnackbar("Please fill both fields", { variant: "warning" });
       return;
     }
+    setLoading(true);
     const data = { task, description };
 
     try {
@@ -26,6 +27,7 @@ const TodoForm = () => {
         "https://mern-todoapp-backend-pi.vercel.app/todo",
         data
       );
+
       console.log(response);
       enqueueSnackbar("Task Added successfully", {
         variant: "success",
@@ -67,7 +69,7 @@ const TodoForm = () => {
             />
           </div>
           <button className="submit-button" type="submit">
-            Add Task
+            {loading ? "Adding ..." : "Add Task"}
           </button>
         </form>
       </div>
