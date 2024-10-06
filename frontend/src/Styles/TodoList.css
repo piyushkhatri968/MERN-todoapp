@@ -1,0 +1,107 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.task-list-container {
+  width: 100%;
+  max-width: 70vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.no-task-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.no-task-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.no-task-icon {
+  font-size: 1.875rem;
+  color: #fbbf24; /* Tailwind's yellow-600 */
+}
+
+.tasks-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-card {
+  background-color: #2b2d42;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 150ms;
+}
+
+.task-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.task-title {
+  color: #8ecae6;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.task-description {
+  color: #edf2f4;
+  font-size: 1rem;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edit-link {
+  transition: color 150ms;
+}
+
+.edit-icon {
+  font-size: 1.875rem;
+  color: #adb5bd;
+  transition: color 150ms;
+}
+
+.edit-icon:hover {
+  color: #8ecae6;
+}
+
+.delete-link {
+  color: #ef233c;
+  transition: color 150ms;
+}
+
+.delete-link:hover {
+  color: #d90429;
+}
+
+.delete-icon {
+  font-size: 1.875rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .task-list-container {
+    max-width: 90vw;
+  }
+  .task-title {
+    font-size: 19px;
+  }
+}

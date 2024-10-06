@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import BackButton from "./BackButton";
+import "../Styles/TodoForm.css";
 
 const TodoForm = () => {
   const [task, setTask] = useState("");
@@ -37,40 +38,35 @@ const TodoForm = () => {
   };
 
   return (
-    <div className="flex  justify-center items-center mt-8">
-      <div className="w-[60vw] bg-[#1e1e1e] text-white p-8 rounded-lg shadow-lg">
+    <div className="container">
+      <div className="form-container">
         <BackButton />
-        <h2 className="text-2xl font-semibold mb-6 text-center">
-          Add a New Task
-        </h2>
-        <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="title" className="text-lg font-medium">
+        <h2 className="form-title">Add a New Task</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="title" className="input-label">
               Title:
             </label>
             <input
               type="text"
               value={task}
               placeholder="What's the task of your To Do?"
-              className="p-3 rounded-md w-full text-black focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="input-field"
               onChange={(e) => setTask(e.target.value)}
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="description" className="text-lg font-medium">
+          <div className="input-group">
+            <label htmlFor="description" className="input-label">
               Description:
             </label>
             <textarea
               value={description}
               placeholder="What's the description of your To Do?"
-              className="p-3 rounded-md w-full text-black focus:outline-none focus:ring-2 focus:ring-green-500 resize-none h-24"
+              className="textarea-field"
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <button
-            className="bg-green-600 hover:bg-green-700 transition-colors px-8 py-3 rounded-md font-semibold text-lg mt-4"
-            type="submit"
-          >
+          <button className="submit-button" type="submit">
             Add Task
           </button>
         </form>
