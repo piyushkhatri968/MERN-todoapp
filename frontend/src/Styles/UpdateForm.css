@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .edit-task-container {
   display: flex;
   justify-content: center;
@@ -87,5 +93,4 @@
   .edit-task-card {
     width: 90vw;
   }
-
 }

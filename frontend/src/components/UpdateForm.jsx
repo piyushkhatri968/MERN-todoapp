@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import BackButton from "./BackButton";
+import Spinner from "../components/Spinner";
 import "../Styles/UpdateForm.css";
 
 const UpdateForm = () => {
@@ -11,16 +12,20 @@ const UpdateForm = () => {
   const { enqueueSnackbar } = useSnackbar();
   const Navigate = useNavigate();
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`https://mern-todoapp-backend-pi.vercel.app/todo/${id}`)
       .then((response) => {
         setTask(response.data.task);
         setDescription(response.data.description);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
   }, []);
 
@@ -50,39 +55,45 @@ const UpdateForm = () => {
   };
 
   return (
-    <div className="edit-task-container">
-      <div className="edit-task-card">
-        <BackButton />
-        <h2 className="edit-task-title">Edit the Task</h2>
-        <form className="edit-task-form" onSubmit={handleUpdate}>
-          <div className="input-group">
-            <label htmlFor="title" className="input-label">
-              Title:
-            </label>
-            <input
-              type="text"
-              value={task}
-              placeholder="What's the task of your To Do?"
-              className="input-field"
-              onChange={(e) => setTask(e.target.value)}
-            />
+    <div className="container">
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="edit-task-container">
+          <div className="edit-task-card">
+            <BackButton />
+            <h2 className="edit-task-title">Edit the Task</h2>
+            <form className="edit-task-form" onSubmit={handleUpdate}>
+              <div className="input-group">
+                <label htmlFor="title" className="input-label">
+                  Title:
+                </label>
+                <input
+                  type="text"
+                  value={task}
+                  placeholder="What's the task of your To Do?"
+                  className="input-field"
+                  onChange={(e) => setTask(e.target.value)}
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="description" className="input-label">
+                  Description:
+                </label>
+                <textarea
+                  value={description}
+                  placeholder="What's the description of your To Do?"
+                  className="textarea-field"
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+              <button className="update-button" type="submit">
+                Update
+              </button>
+            </form>
           </div>
-          <div className="input-group">
-            <label htmlFor="description" className="input-label">
-              Description:
-            </label>
-            <textarea
-              value={description}
-              placeholder="What's the description of your To Do?"
-              className="textarea-field"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          <button className="update-button" type="submit">
-            Update
-          </button>
-        </form>
-      </div>
+        </div>
+      )}
     </div>
   );
 };

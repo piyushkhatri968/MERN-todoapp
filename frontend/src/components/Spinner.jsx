@@ -1,10 +1,15 @@
 import React from "react";
-import OrbitProgress from "react-loading-indicators/OrbitProgress";
+import Atom from "react-loading-indicators/Atom";
 
 const Spinner = () => {
   return (
     <div>
-      <OrbitProgress text="Loading" size="large" textColor="black" />
+      <Atom
+        text="Loading..."
+        textColor="black"
+        color="black" // spinner color
+        style={{ fontSize: "25px" }} // overall size of the spinner
+      />
     </div>
   );
 };

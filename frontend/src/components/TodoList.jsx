@@ -41,7 +41,7 @@ const TodoList = () => {
             <div className="tasks-wrapper">
               {tasks.map((task, index) => (
                 <div key={task._id} className="task-card">
-                  <div >
+                  <div>
                     <div className="task-title">{task.task}</div>
                     <div className="task-description">{task.description}</div>
                   </div>
