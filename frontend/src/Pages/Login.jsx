@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Styles/Login.css";
 import { useSnackbar } from "notistack";
+import OrbitSpinner from "../components/OrbitSpinner";
 
 const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -20,10 +21,12 @@ const Login = ({ setIsAuthenticated }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     const { email, password } = loginInfo;
     if (!email || !password) {
       return enqueueSnackbar("Please input all fields", { variant: "warning" });
     }
+    setLoading(true);
     try {
       //   const local_url = "http://localhost:8080/auth/login";
       const live_url = "https://mern-todoapp-backend-pi.vercel.app/auth/login";
@@ -38,6 +41,7 @@ const Login = ({ setIsAuthenticated }) => {
       );
 
       if (success) {
+        setLoading(false);
         localStorage.setItem("token", jwtToken);
         localStorage.setItem("loggedInUser", name);
         setIsAuthenticated(true);
@@ -46,9 +50,11 @@ const Login = ({ setIsAuthenticated }) => {
           navigate("/");
         }, 2000);
       } else if (!success) {
+        setLoading(false);
         enqueueSnackbar(`${message}`, { variant: "error" });
       }
     } catch (error) {
+      setLoading(false);
       console.log(error);
       const errorDetails =
         error.response.data.error?.details[0].message ||
@@ -88,7 +94,9 @@ const Login = ({ setIsAuthenticated }) => {
             value={loginInfo.password}
           />
         </div>
-        <button className="login-button">Login</button>
+        <button className="login-button flex justify-center items-center">
+          {loading ? "Logging In ..." : "Login"}
+        </button>
         <span className="login-link-text">Don't have an account?</span>
         <Link to="/signup" className="login-link">
           Signup

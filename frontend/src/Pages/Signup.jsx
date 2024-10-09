@@ -12,6 +12,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,6 +25,7 @@ const Signup = () => {
     if (!name || !email || !password) {
       return enqueueSnackbar("Please input all fields", { variant: "warning" });
     }
+    setLoading(true);
     try {
       //   const local_url = "http://localhost:8080/auth/signup";
       const live_url = "https://mern-todoapp-backend-pi.vercel.app/auth/signup";
@@ -32,6 +34,7 @@ const Signup = () => {
       const { success, message } = result.data;
 
       if (success) {
+        setLoading(false);
         enqueueSnackbar(`${message}`, { variant: "success" });
         setTimeout(() => {
           navigate("/login");
@@ -40,11 +43,11 @@ const Signup = () => {
         enqueueSnackbar(`${message}`, { variant: "error" });
       }
     } catch (error) {
+      setLoading(false);
       console.log(error);
       const errorDetails =
         error.response.data.error?.details[0].message ||
         error.response.data.message;
-
       enqueueSnackbar(`${errorDetails}`, { variant: "error" });
     }
   };
@@ -94,7 +97,7 @@ const Signup = () => {
             />
           </div>
           <button className="signup-button" type="submit">
-            Signup
+            {loading ? "Signing In ..." : "Signup"}
           </button>
         </form>
         <span className="signup-footer">
