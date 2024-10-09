@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Spinner from "./Spinner";
+import Spinner from "../components/Spinner";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
@@ -13,8 +13,15 @@ const TodoList = () => {
 
   useEffect(() => {
     setloading(true);
+    // const local_url = "http://localhost:8080/todo";
+    const live_url = "https://mern-todoapp-backend-pi.vercel.app/todo";
+    const headers = {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
     axios
-      .get("https://mern-todoapp-backend-pi.vercel.app/todo")
+      .get(live_url, headers)
       .then((response) => {
         setTasks(response.data.data);
         console.log(response.data.data);

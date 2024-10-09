@@ -4,11 +4,13 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const todoRoute = require("./routes/todoRoute");
+const AuthRoute = require("./routes/AuthRoute");
 
 app.use(express.json());
 app.use(cors());
 
 const mongoURL = process.env.MONGO_ATLAS_URL;
+// const mongoURL = "mongodb://127.0.0.1:27017/todoweb";
 // const port = process.env.PORT;
 
 mongoose
@@ -29,5 +31,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/todo", todoRoute);
+
+app.use("/auth", AuthRoute);
 
 module.exports = app; // Export the app instead of using app.listen()

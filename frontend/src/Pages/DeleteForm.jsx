@@ -12,11 +12,17 @@ const DeleteForm = () => {
   };
   const { id } = useParams();
   const handleDelete = async () => {
+    // const local_url = "http://localhost:8080/todo";
+    const live_url = "https://mern-todoapp-backend-pi.vercel.app/todo";
+    const headers = {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
+
     try {
       Setloading(true);
-      const deleteTask = await axios.delete(
-        `https://mern-todoapp-backend-pi.vercel.app/todo/${id}`
-      );
+      const deleteTask = await axios.delete(`${live_url}/${id}`, headers);
       enqueueSnackbar("Task Deleted Successfully", { variant: "success" });
       Navigate("/");
     } catch (error) {

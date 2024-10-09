@@ -1,0 +1,95 @@
+/* Container specific for Login */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding: 2rem;
+}
+
+/* Title styling specific for Login */
+.login-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #f1f1f1;
+  text-align: center;
+}
+
+/* Form styling specific for Login */
+.login-form {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  color: white;
+}
+
+/* Input group (label + input field) */
+.login-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.login-input-label {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+/* Input field styling */
+.login-input-field {
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: black;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  box-shadow: 0 0 0 2px transparent;
+}
+
+.login-input-field:focus {
+  box-shadow: 0 0 0 2px #22c55e;
+}
+
+/* Button styling */
+.login-button {
+  background-color: #16a34a;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 150ms ease;
+  margin-top: 1rem;
+}
+
+.login-button:hover {
+  background-color: #15803d;
+}
+
+/* Text for signup link */
+.login-link-text {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #999;
+}
+
+.login-link {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
