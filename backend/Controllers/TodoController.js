@@ -57,7 +57,7 @@ const deleteTodoRoute = async (req, res) => {
   try {
     const { id } = req.params;
     const deleteTask = await Todo.findOneAndDelete({
-      id: _id,
+      _id: id,
       user: req.user._id,
     });
     if (!deleteTask) {

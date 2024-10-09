@@ -19,7 +19,6 @@ const DeleteForm = () => {
         Authorization: localStorage.getItem("token"),
       },
     };
-
     try {
       Setloading(true);
       const deleteTask = await axios.delete(`${live_url}/${id}`, headers);
