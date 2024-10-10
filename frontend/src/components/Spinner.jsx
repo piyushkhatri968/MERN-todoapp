@@ -1,16 +1,19 @@
 import React from "react";
-import Atom from "react-loading-indicators/Atom";
+import { RotatingLines } from "react-loader-spinner";
 
 const Spinner = () => {
   return (
-    <div>
-      <Atom
-        text="Loading..."
-        textColor="black"
-        color="black" // spinner color
-        style={{ fontSize: "25px" }} // overall size of the spinner
-      />
-    </div>
+    <RotatingLines
+      visible={true}
+      height="96"
+      width="96"
+      color="grey"
+      strokeWidth="5"
+      animationDuration="0.75"
+      ariaLabel="rotating-lines-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
   );
 };
 

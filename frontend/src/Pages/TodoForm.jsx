@@ -20,6 +20,8 @@ const TodoForm = () => {
       return;
     }
 
+    setLoading(true);
+
     const data = { task, description };
 
     // const local_url = "http://localhost:8080/todo";
@@ -32,7 +34,6 @@ const TodoForm = () => {
 
     try {
       const response = await axios.post(live_url, data, headers);
-      setLoading(true);
       console.log(response);
       enqueueSnackbar("Task Added successfully", {
         variant: "success",
@@ -75,7 +76,7 @@ const TodoForm = () => {
             />
           </div>
           <button className="submit-button" type="submit">
-            {loading ? "Adding ..." : "Add Task"}
+            {loading ? "Adding task ..." : "Add Task"}
           </button>
         </form>
       </div>

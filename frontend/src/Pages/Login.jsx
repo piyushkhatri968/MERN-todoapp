@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Styles/Login.css";
 import { useSnackbar } from "notistack";
-import OrbitSpinner from "../components/OrbitSpinner";
 
 const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
